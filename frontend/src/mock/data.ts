@@ -25,10 +25,10 @@ export const COGNATE_SETS: CognateSet[] = [
   { root: '*gʷen-', meaning: '女人', languages: { '英语': 'queen', '德语': 'Frau', '俄语': 'жена' }, period: 'PIE', family: 'ie' },
 ]
 
-export function buildGraph() {
+export function buildGraph(sets: CognateSet[] = COGNATE_SETS) {
   const nodes: any[] = []
   const links: any[] = []
-  COGNATE_SETS.forEach((cs, ci) => {
+  sets.forEach((cs, ci) => {
     const rootId = 'root_' + ci
     nodes.push({ id: rootId, word: cs.root, language: 'Proto-IE', meaning: cs.meaning, family: 'ie', era: '公元前5000年' })
     Object.entries(cs.languages).forEach(([lang, word]) => {
